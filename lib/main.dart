@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:solar/constants.dart';
+import 'package:solar/login_page.dart';
+import 'package:solar/widget/app_layout.dart';
+import 'package:solar/widget/secondary_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Home'),
+      home: const MyHomePage(title: 'Танилцуулга'),
     );
   }
 }
@@ -29,35 +33,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
+    return AppLayout(
+      'Танилцуулга',
+      child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Column(
+              children: const [
+                Icon(
+                  Icons.electric_bike,
+                  size: 100,
+                ),
+                Text(
+                  "Тавтай морил",
+                  style: TextStyle(fontSize: FONT_MD),
+                ),
+              ],
             ),
+            SecondaryButton(
+                text: "Нэвтрэх",
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
+                }),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

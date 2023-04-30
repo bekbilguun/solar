@@ -19,7 +19,7 @@ class MenuItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       borderRadius: BorderRadius.circular(BORDER_RADIUS_MD),
-      color: kLambdaOrangeColor,
+      color: Colors.blue,
       child: InkWell(
         splashColor: kSplashColor,
         splashFactory: InkRipple.splashFactory,
